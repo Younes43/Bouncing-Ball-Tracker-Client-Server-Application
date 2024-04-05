@@ -10,6 +10,15 @@ This project implements a real-time bouncing ball tracker using WebRTC for commu
 - **Ball Position Tracking:** Implements custom logic to detect and track the position of a bouncing ball in the video stream.
 - **Accuracy Calculation:** Calculates the error between the detected and actual positions of the ball, demonstrating the accuracy of the tracking algorithm.
 
+
+## Logic Overview
+
+- The **Server** simulates a bouncing ball within a predefined frame, generating frames of a white ball bouncing in black background, and streams this video to the client using WebRTC. It receives the detected position of the ball from the client and calculates the tracking accuracy, providing a simple yet effective way to visualize and understand the dynamics of object tracking in a controlled environment.
+
+- The **Client** receives the video stream, processes each frame to detect the position of the bouncing ball, and sends the detected position back to the server through a WebRTC data channel. The detection process involves converting the video frame to grayscale, applying a binary threshold to isolate the ball based on its brightness, and using contour detection to find the largest white object presumed to be the ball. The ball's center is determined and its coordinates are sent back to the server.
+
+**Watch the Demo**: See the app in action by viewing the demo video in `recording/demo.mp4`.
+
 ## Quick Start
 
 ### Prerequisites
@@ -54,7 +63,7 @@ This project implements a real-time bouncing ball tracker using WebRTC for commu
 
 #### Build Docker Images with Docker Compose
 
-All references to `127.0.0.1` in the server and client scripts needs to be replaced with `server` for the client to correctly address the server container. (refer to the issue Networking Between Containers at the end of the document)
+For Docker , All references to `127.0.0.1` in the server and client scripts needs to be replaced with `server` for the client to correctly address the server container. (refer to the issue Networking Between Containers at the end of the document)
 
 1. **Build Images:**
     From the root directory of the project, run:
@@ -114,12 +123,6 @@ These commands are invaluable for debugging and ensuring that both the server an
     ```bash
     kubectl logs <pod-name>
     ```
-
-## Logic Overview
-
-- The **Server** simulates a bouncing ball within a predefined frame and streams this video to the client using WebRTC. It also receives the detected position of the ball from the client and calculates the tracking accuracy.
-
-- The **Client** receives the video stream, processes each frame to detect the position of the bouncing ball, and sends the detected position back to the server through a WebRTC data channel.
 
 
 
