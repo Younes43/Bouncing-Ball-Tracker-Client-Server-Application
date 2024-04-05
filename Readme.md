@@ -19,17 +19,16 @@ This project implements a real-time bouncing ball tracker using WebRTC for commu
 - Kubernetes cluster (Minikube, k3s, or MicroK8s for local development)
 - `aiortc`, `opencv-python`, `numpy`, and other dependencies listed in `requirements.txt`.
 
+
 ### Installation
 
-1. Clone the repository:
+1. **Create and Activate a Virtual Environment:**
     ```bash
-    git clone <repository-url>
+    python3 -m venv venv
+    source venv/bin/activate
     ```
-2. Navigate to the project directory:
-    ```bash
-    cd <project-directory>
-    ```
-3. Install the required dependencies:
+
+2. **Install the Required Dependencies:**
     ```bash
     pip install -r requirements.txt
     ```
@@ -120,9 +119,8 @@ These commands are invaluable for debugging and ensuring that both the server an
 
 - The **Client** receives the video stream, processes each frame to detect the position of the bouncing ball, and sends the detected position back to the server through a WebRTC data channel.
 
-## Learning Experience
 
-Working on this project was a fantastic opportunity to dive deep into real-time video processing and streaming using WebRTC. It allowed us to explore the intricacies of client-server communication in a highly interactive environment. This project was not only about implementing a functional application but also about overcoming unique challenges and learning new technologies along the way. It has been an enriching experience, pushing the boundaries of what we can achieve with Python and real-time data processing.
+
 
 ## Challenges and Solutions
 
@@ -130,7 +128,7 @@ Working on this project was a fantastic opportunity to dive deep into real-time 
 
 A significant challenge encountered during development was compatibility issues between OpenCV and aiortc, particularly concerning the underlying usage of PyAV, which relies on FFmpeg. This issue manifested as an inability to display images with OpenCV after importing PyAV. The root cause was a conflict in FFmpeg versions expected by OpenCV and PyAV.
 
-**Solution:** After extensive research and debugging, the issue was resolved by installing specific versions of FFmpeg compatible with both libraries. The process involved compiling OpenCV from source, ensuring it was built against these specific FFmpeg versions. Detailed steps for this workaround can be found in a helpful [Stack Overflow discussion](https://stackoverflow.com/questions/72604912/cant-show-image-with-opencv-when-importing-av/72647308#72647308). For future reference and to aid anyone facing similar issues, I've retained the script used for this process.
+**Solution:** After extensive research and debugging, the issue was resolved by installing specific versions of FFmpeg compatible with both libraries. The process involved compiling OpenCV from source, ensuring it was built against these specific FFmpeg versions (4.4.2). Detailed steps for this workaround can be found in a helpful [Stack Overflow discussion](https://stackoverflow.com/questions/72604912/cant-show-image-with-opencv-when-importing-av/72647308#72647308). For future reference and to aid anyone facing similar issues, I've retained the script used for this process (build.sh).
 
 ### Docker-related Challenges
 
@@ -146,8 +144,8 @@ Another issue encountered was related to displaying images processed by OpenCV i
 
 **Solution:** The solution involved X11 forwarding to enable GUI applications running in Docker containers to display on the host machine's screen. This setup requires configuring the Docker container to connect to the host's X11 server. An alternative solution for environments where X11 forwarding is not feasible is to save processed images to files and view them outside the container.
 
-### Final Thoughts
+### Final Thoughts / Learning Experience
 
-These challenges underscored the importance of a thorough understanding of the technologies and libraries being integrated into a project. Resolving these issues was a significant learning experience, highlighting the complexities of working with real-time video streaming, containerization, and cross-library compatibility. The solutions implemented not only addressed the immediate problems but also enriched my knowledge and skills in software development and deployment.
+Resolving these issues was a significant learning experience, highlighting the complexities of working with real-time video streaming, containerization, and cross-library compatibility. The solutions implemented not only addressed the immediate problems but also enriched my knowledge and skills in software development and deployment.
 
 

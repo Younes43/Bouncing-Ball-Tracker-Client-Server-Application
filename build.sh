@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Define paths
-## Modify the following path to your /opencv-python/opencv folder after running: git clone --recursive https://github.com/opencv/opencv-python.git
-OPENCV_SOURCE_DIR="/home/younes/opencv-python/opencv"
+## After git clone --recursive https://github.com/opencv/opencv-python.git
+OPENCV_SOURCE_DIR="/home/younes/opencv-python/opencv" # to be adapted to the clonned directory
 BUILD_DIR="${OPENCV_SOURCE_DIR}/build"
 FFMPEG_PATH="/usr/local"
 
