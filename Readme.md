@@ -54,6 +54,8 @@ This project implements a real-time bouncing ball tracker using WebRTC for commu
 
 #### Build Docker Images with Docker Compose
 
+All references to `127.0.0.1` in the server and client scripts needs to be replaced with `server` for the client to correctly address the server container. (refer to the issue Networking Between Containers at the end of the document)
+
 1. **Build Images:**
     From the root directory of the project, run:
     ```bash
@@ -136,7 +138,7 @@ A significant challenge encountered during development was compatibility issues 
 
 When deploying the client and server applications using Docker, a common hurdle was establishing communication between the two. By default, each container is isolated and cannot directly access `localhost` of the host machine or other containers.
 
-**Solution:** This was overcome by using Docker's networking capabilities. Specifically, when using Docker Compose, the service names defined in `docker-compose.yml` act as hostnames that can be used for inter-container communication. Therefore, references to `127.0.0.1` in the server and client scripts were replaced with `server` for the client to correctly address the server container.
+**Solution:** This was overcome by using Docker's networking capabilities. Specifically, when using Docker Compose, the service names defined in `docker-compose.yml` act as hostnames that can be used for inter-container communication. Therefore, references to `127.0.0.1` in the server and client scripts needs to be replaced with `server` for the client to correctly address the server container.
 
 #### Displaying Images from Containers
 
@@ -147,5 +149,7 @@ Another issue encountered was related to displaying images processed by OpenCV i
 ### Final Thoughts / Learning Experience
 
 Resolving these issues was a significant learning experience, highlighting the complexities of working with real-time video streaming, containerization, and cross-library compatibility. The solutions implemented not only addressed the immediate problems but also enriched my knowledge and skills in software development and deployment.
+
+It wa a great opportunity for me to for showcasing my ability to quickly learn new concepts, my persistence in solving non-trivial problems.
 
 
