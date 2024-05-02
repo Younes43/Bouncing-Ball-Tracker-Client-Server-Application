@@ -10,6 +10,9 @@ This project implements a real-time bouncing ball tracker using WebRTC for commu
 - **Ball Position Tracking:** Implements custom logic to detect and track the position of a bouncing ball in the video stream.
 - **Accuracy Calculation:** Calculates the error between the detected and actual positions of the ball, demonstrating the accuracy of the tracking algorithm.
 
+## Demo
+
+![demo](recording/demo_gif.gif)
 
 ## Logic Overview
 
